@@ -13,4 +13,6 @@ jobs:
       - name: Build the Docker image
         run: docker build -t simple-tcp-server-for-http-kt .
       - name: Exec kotlin program
-        run: docker run --rm --name simple-tcp-server-for-http-kt simple-tcp-server-for-http-kt
+        run: docker run -d --port 8000:8000 --rm --name simple-tcp-server-for-http-kt simple-tcp-server-for-http-kt
+      - name: cURL
+        run: curl localhost:8000
