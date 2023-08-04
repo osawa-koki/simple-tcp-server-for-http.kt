@@ -1,0 +1,16 @@
+name: Run Program
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build the Docker image
+        run: docker build -t simple-tcp-server-for-http-kt .
+      - name: Exec kotlin program
+        run: docker run --rm --name simple-tcp-server-for-http-kt simple-tcp-server-for-http-kt
